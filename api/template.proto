@@ -1,0 +1,23 @@
+// protoc --go_out=.  --go-grpc_out=. *.proto
+syntax = "proto3";
+
+package template;
+option go_package = "./;api";
+
+service Greeter {
+  rpc HelloWorld(HelloWorldReq) returns(HelloWorldRes){}
+}
+
+message HelloWorldReq {
+  string question = 1;
+}
+
+enum Type {
+  ZERO=0;
+  ONE=1;
+  TWO=2;
+}
+message HelloWorldRes{
+  Type type = 1;
+  string answer = 2; // json
+}
